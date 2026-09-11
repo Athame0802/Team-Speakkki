@@ -1,4 +1,4 @@
 [submodule "Team-Speakkki/Assets/Plugins/SchoolSync"]
 	path = Team-Speakkki/Assets/Plugins/SchoolSync
 	url = https://github.com/sdh-hyun/after-school.git
-	branch = codex/school-sync-dist
+	branch = school-sync
