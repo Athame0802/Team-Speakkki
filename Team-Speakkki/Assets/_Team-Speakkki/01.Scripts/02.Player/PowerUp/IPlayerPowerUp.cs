@@ -1,7 +1,13 @@
 ﻿namespace TeamSpeakkki.Chaewon
 {
-    public interface IPlayerPowerUp
+    public abstract class IPlayerPowerUp
     {
+        public int PowerUpLevel { get; }
 
+        public void OnDamaged(PlayerState player)
+        {
+            IPlayerPowerUp powerUpAfterDamaged = player.GetPowerUpWhenBeDamaged(PowerUpLevel);
+            player.ChangePowerUp(powerUpAfterDamaged);
+        }
     }
 }
