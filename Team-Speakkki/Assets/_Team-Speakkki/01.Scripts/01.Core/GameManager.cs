@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-// using School.PasitionSync;
+using School.PositionSync;
 
 namespace TeamSpeakkki.Chaewon
 {
@@ -18,7 +18,10 @@ namespace TeamSpeakkki.Chaewon
                 DontDestroyOnLoad(gameObject);
             }
             else
+            {
                 Destroy(gameObject);
+                return;
+            }
         }
 
         private void OnEnable()

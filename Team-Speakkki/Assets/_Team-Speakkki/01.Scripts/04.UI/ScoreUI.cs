@@ -1,11 +1,9 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
-
-
-namespace HIC
+namespace TeamSpeakkki.Inchang
 {
     public class ScoreUI : MonoBehaviour
     {
