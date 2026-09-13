@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+// using School.PasitionSync;
 
 namespace TeamSpeakkki.Chaewon
 {
@@ -7,7 +8,7 @@ namespace TeamSpeakkki.Chaewon
     {
         public static GameManager Instance;
 
-        [SerializeField] private PlayerHealth playerHealth;
+        [SerializeField] private PlayerState playerState;
 
         private void Awake()
         {
@@ -22,12 +23,12 @@ namespace TeamSpeakkki.Chaewon
 
         private void OnEnable()
         {
-            playerHealth.OnDied += GameOver;
+            playerState.OnDied += GameOver;
         }
 
         private void OnDisable()
         {
-            playerHealth.OnDied -= GameOver;
+            playerState.OnDied -= GameOver;
         }
 
         private void GameOver()
