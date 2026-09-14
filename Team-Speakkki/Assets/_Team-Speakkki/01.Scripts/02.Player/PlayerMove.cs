@@ -27,7 +27,7 @@ namespace TeamSpeakkki.Chaewon
 
         private void Move()
         {
-            rb.linearVelocityX = InputManager.Instance.HorizontalInput;
+            rb.linearVelocityX = InputManager.Instance.HorizontalInput * moveSpeed;
         }
 
         private void TryJump()
