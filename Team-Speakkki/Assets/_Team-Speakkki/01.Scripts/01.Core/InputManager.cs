@@ -6,7 +6,10 @@ namespace TeamSpeakkki.Chaewon
     public class InputManager : MonoBehaviour
     {
         public static InputManager Instance;
-        public event Action OnJumpKeyPressed;
+        
+        public event Action OnJumpKeyDown;
+        public event Action OnJumpKeyUp;
+
         private float horizontalInput;
 
         public float HorizontalInput => horizontalInput;
@@ -29,7 +32,12 @@ namespace TeamSpeakkki.Chaewon
             // TODO: Space가 아닌 다른 키로도 점프키면 입력 되게 만들기
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                OnJumpKeyPressed?.Invoke();
+                OnJumpKeyDown?.Invoke();
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                OnJumpKeyUp?.Invoke();
             }
         }
     }

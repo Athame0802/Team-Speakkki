@@ -1,15 +1,20 @@
-using TeamSpeakkki.Chaewon;
+﻿using TeamSpeakkki.Chaewon;
 using UnityEngine;
 
 public class CrashAble : MonoBehaviour
 {
+    [SerializeField] private LayerMask playerLayer;
+
+    [SerializeField] private int requiredHitsToBreak = 1;
     [SerializeField] private bool isBreakable = true;
-    [SerializeField] private GameObject Coin; // 코인/아이템 등 (선택)
+    [SerializeField] private GameObject SpawningObjectOnHit;
+
     private int hitCount = 0; // 블록이 맞은 횟수
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player")) return;
+        if (collision.gameObject.layer != playerLayer.value) 
+            return;
 
         PlayerMove pm = collision.gameObject.GetComponent<PlayerMove>();
         if (pm != null && pm.IsCurrentJumpArising)
@@ -17,24 +22,29 @@ public class CrashAble : MonoBehaviour
             OnHitFromBelow(collision.gameObject);
         }
     }
-
+    
     void OnHitFromBelow(GameObject player)
     {
         Debug.Log($"{name} 블록이 아래에서 맞았음!");
 
-        // 예: 아이템 박스라면 아이템 스폰
-        if (Coin != null && hitCount == 0) // 처음 한 번만 코인 스폰
+        // 아이템 박스라면 처음 한 번만 아이템 스폰
+        if (SpawningObjectOnHit != null && hitCount == 0)
         {
-            Instantiate(Coin, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+            Instantiate(SpawningObjectOnHit, transform.position + Vector3.up * 0.5f, Quaternion.identity);
         }
 
-        // 예: 벽돌이면 파괴
         if (isBreakable)
         {
             hitCount++;
-            if(hitCount >= 3) Destroy(gameObject);
-        }
 
-        // 파괴되지 않는 블록이면 살짝 튕기는 애니메이션 등 추가 가능
+            if (hitCount >= requiredHitsToBreak) 
+                Break();
+        }
+    }
+
+    // TODO: 부서질 때 효과 추가
+    private void Break()
+    {
+        Destroy(gameObject);
     }
 }
