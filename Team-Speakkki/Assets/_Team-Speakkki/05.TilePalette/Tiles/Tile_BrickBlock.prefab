@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5582638129293751615}
   - component: {fileID: 7795053496565576846}
   - component: {fileID: 7643644167269719727}
+  - component: {fileID: -2974231976835085594}
   m_Layer: 16
   m_Name: Tile_BrickBlock
   m_TagString: Untagged
@@ -138,3 +139,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-2974231976835085594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3703694389333385648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ba5cf25fadfde478ec340cfdfb1c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HittableBlock
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  requiredHitsToBreak: 1
+  isBreakable: 1
+  SpawningObjectOnHit: {fileID: 0}
