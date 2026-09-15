@@ -44,7 +44,7 @@ namespace TeamSpeakkki.Chaewon
 
         private void Jump()
         {
-            rb.AddForce(new Vector2(0, jumpPower));
+            rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
         }
 
         private bool GetIsJumpArising()
