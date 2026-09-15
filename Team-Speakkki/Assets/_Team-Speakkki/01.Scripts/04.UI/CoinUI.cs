@@ -13,8 +13,6 @@ namespace TeamSpeakkki.Inchang.CoinUI
 
         [SerializeField] private string lableCoinText = "Coin : ";
 
-        private int currentCoin;
-
         private void Start()
         {
             Refresh(playerWallet.CoinCount);
@@ -22,21 +20,17 @@ namespace TeamSpeakkki.Inchang.CoinUI
 
         private void OnEnable()
         {
-            currentCoin += amount;
-            Refresh();
+            playerWallet.OnCoinChanged += Refresh;
         }
 
         private void OnDisable()
         {
-            coinText.text = label_coin_text + currentCoin.ToString("D2");
+            playerWallet.OnCoinChanged -= Refresh;
         }
-        private void Update()
+
+        private void Refresh(int coinAmount)
         {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                if (currentCoin > 98) return;
-                AddCoin(1);
-            }
+            coinText.text = lableCoinText + coinAmount.ToString("D2");
         }
     }
 }
