@@ -9,17 +9,32 @@ namespace TeamSpeakkki.Chaewon
 
         [SerializeField] private float jumpPower = 3f;
         [SerializeField] private float moveSpeed = 3f;
+        [SerializeField] private float gravityScaleOnJumpKeyHoldDown = 3f;
 
         public bool IsCurrentJumpArising => GetIsJumpArising();
 
+        private bool isLowGravityAppliedOnThisJump = false;
+        private float basicGravityScale;
+
+        private void Awake()
+        {
+            basicGravityScale = rb.gravityScale;
+        }
+
         private void OnEnable()
         {
-            InputManager.Instance.OnJumpKeyPressed += TryJump;
+            InputManager.Instance.OnJumpKeyDown += TryJump;
+            InputManager.Instance.OnJumpKeyDown += CheckShouldJumpInLowGravity;
+
+            InputManager.Instance.OnJumpKeyUp += RecoverJumpGravityScale;
         }
 
         private void OnDisable()
         {
-            InputManager.Instance.OnJumpKeyPressed -= TryJump;
+            InputManager.Instance.OnJumpKeyDown -= TryJump;
+            InputManager.Instance.OnJumpKeyDown -= CheckShouldJumpInLowGravity;
+
+            InputManager.Instance.OnJumpKeyUp -= RecoverJumpGravityScale;
         }
 
         private void FixedUpdate()
@@ -42,9 +57,27 @@ namespace TeamSpeakkki.Chaewon
             Jump();
         }
 
+        private void CheckShouldJumpInLowGravity()
+        {
+            if (isLowGravityAppliedOnThisJump)
+                return;
+
+            rb.gravityScale = gravityScaleOnJumpKeyHoldDown;
+        }
+
+        private void RecoverJumpGravityScale()
+        {
+            if (isLowGravityAppliedOnThisJump)
+                return;
+
+            rb.gravityScale = basicGravityScale;
+            isLowGravityAppliedOnThisJump = true;
+        }
+
         private void Jump()
         {
-            rb.AddForce(new Vector2(0, jumpPower));
+            rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
+            isLowGravityAppliedOnThisJump = false;
         }
 
         private bool GetIsJumpArising()

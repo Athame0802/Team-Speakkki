@@ -1,3 +1,4 @@
+﻿using TeamSpeakkki.Chaewon;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -7,32 +8,33 @@ namespace TeamSpeakkki.Inchang.CoinUI
 {
     public class CoinUI : MonoBehaviour
     {
+        [SerializeField] private PlayerWallet playerWallet;
         [SerializeField] private TextMeshProUGUI coinText;
 
-        [SerializeField] private string label_coin_text = "Coin : ";
+        [SerializeField] private string lableCoinText = "Coin : ";
 
-        private int current_coin;
+        private int currentCoin;
 
         private void Start()
         {
+            Refresh(playerWallet.CoinCount);
+        }
+
+        private void OnEnable()
+        {
+            currentCoin += amount;
             Refresh();
         }
 
-        private void AddCoin(int amount)
+        private void OnDisable()
         {
-            current_coin += amount;
-            Refresh();
-        }
-
-        private void Refresh()
-        {
-            coinText.text = label_coin_text + current_coin.ToString("D2");
+            coinText.text = label_coin_text + currentCoin.ToString("D2");
         }
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                if (current_coin > 98) return;
+                if (currentCoin > 98) return;
                 AddCoin(1);
             }
         }

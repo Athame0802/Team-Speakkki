@@ -11,7 +11,7 @@ namespace TeamSpeakkki.Chaewon
 
 
         private ContactFilter2D groundContanctFilter;
-        private Collider2D[] colliders;
+        private Collider2D[] colliders = new Collider2D[4];
         private bool isGrounded = false;
 
         public bool IsGrounded => isGrounded;
