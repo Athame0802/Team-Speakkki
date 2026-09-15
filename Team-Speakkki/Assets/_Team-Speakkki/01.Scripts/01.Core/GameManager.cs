@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using School.PositionSync;
+using System;
 
 namespace TeamSpeakkki.Chaewon
 {
@@ -9,6 +10,8 @@ namespace TeamSpeakkki.Chaewon
         public static GameManager Instance;
 
         [SerializeField] private PlayerState playerState;
+
+        public Action OnGameOver;
 
         private void Awake()
         {
@@ -33,10 +36,9 @@ namespace TeamSpeakkki.Chaewon
         {
             playerState.OnDied -= GameOver;
         }
-
         private void GameOver()
         {
-            SceneManager.LoadScene(Scenes.GameOver);
+            OnGameOver?.Invoke();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace TeamSpeakkki.Inchang.CoinUI
 
         [SerializeField] private string label_coin_text = "Coin : ";
 
-        private int currentCoin;
+        private int current_coin;
 
         private void Start()
         {
@@ -20,19 +20,19 @@ namespace TeamSpeakkki.Inchang.CoinUI
 
         private void AddCoin(int amount)
         {
-            currentCoin += amount;
+            current_coin += amount;
             Refresh();
         }
 
         private void Refresh()
         {
-            coinText.text = label_coin_text + currentCoin.ToString("D2");
+            coinText.text = label_coin_text + current_coin.ToString("D2");
         }
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                if (currentCoin > 98) return;
+                if (current_coin > 98) return;
                 AddCoin(1);
             }
         }
