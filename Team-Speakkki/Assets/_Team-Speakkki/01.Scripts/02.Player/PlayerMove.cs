@@ -10,6 +10,8 @@ namespace TeamSpeakkki.Chaewon
         [SerializeField] private float jumpPower = 3f;
         [SerializeField] private float moveSpeed = 3f;
 
+        public bool IsCurrentJumpArising => GetIsJumpArising();
+
         private void OnEnable()
         {
             InputManager.Instance.OnJumpKeyPressed += TryJump;
@@ -43,6 +45,19 @@ namespace TeamSpeakkki.Chaewon
         private void Jump()
         {
             rb.AddForce(new Vector2(0, jumpPower));
+        }
+
+        private bool GetIsJumpArising()
+        {
+            // 땅에 있을 때
+            if (groundChecker.IsGrounded)
+                return false;
+
+            // 떨어지고 있을 때
+            if (rb.linearVelocityY <= 0f)
+                return false;
+
+            return true;
         }
     }
 }
