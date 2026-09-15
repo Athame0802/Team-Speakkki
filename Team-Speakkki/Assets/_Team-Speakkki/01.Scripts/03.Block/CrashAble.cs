@@ -13,11 +13,10 @@ public class CrashAble : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != playerLayer.value) 
+        if (!collision.gameObject.CompareTag("Player"))
             return;
 
-        PlayerMove pm = collision.gameObject.GetComponent<PlayerMove>();
-        if (pm != null && pm.IsCurrentJumpArising)
+        if (collision.transform.position.y < transform.position.y)
         {
             OnHitFromBelow(collision.gameObject);
         }

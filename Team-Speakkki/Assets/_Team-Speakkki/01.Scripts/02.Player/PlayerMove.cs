@@ -11,8 +11,6 @@ namespace TeamSpeakkki.Chaewon
         [SerializeField] private float moveSpeed = 3f;
         [SerializeField] private float gravityScaleOnJumpKeyHoldDown = 3f;
 
-        public bool IsCurrentJumpArising => GetIsJumpArising();
-
         private bool isLowGravityAppliedOnThisJump = false;
         private float basicGravityScale;
 

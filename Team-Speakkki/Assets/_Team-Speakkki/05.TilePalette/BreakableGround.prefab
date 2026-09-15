@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1049220967486032774, guid: 5ced1fcd08676594ea34719defa66a67, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4651331164166560008, guid: 5ced1fcd08676594ea34719defa66a67, type: 3}
       propertyPath: m_Name
       value: BreakableBlock
@@ -277,7 +281,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6337459669217165478, guid: 5ced1fcd08676594ea34719defa66a67, type: 3}
   m_PrefabInstance: {fileID: 2812218286031365022}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5771594038244913343
+--- !u!114 &5774020550832924789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
