@@ -8,17 +8,15 @@ public class PositionSynchronizer : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject otherPlayerPrefab;
 
-    private Server server;
-
     // 만약 게임 도중에 플레이어가 들어올 수 있다면 List로 변경
     private List<GameObject> otherPlayers;
 
     public void Start()
     {
-        server = NetworkManager.Instance.Server;
+        Server server = NetworkManager.Instance.Server;
 
         Info[] players = server.GetPos();
-
+        
         otherPlayers = new(players.Length);
 
         for (int i = 0; i < otherPlayers.Count; i++)
@@ -35,6 +33,8 @@ public class PositionSynchronizer : MonoBehaviour
 
     public void Update()
     {
+        Server server = NetworkManager.Instance.Server;
+
         Vector2 playerPosition = player.transform.position;
         server.SetPos(new Info(playerPosition.x, playerPosition.y));
 
