@@ -3,7 +3,7 @@ using System;
 
 namespace TeamSpeakkki.Chaewon
 {
-    public class PlayerState : MonoBehaviour
+    public class PlayerState : MonoBehaviour, IDamageable
     {
         public event Action OnDied;
 

@@ -28,6 +28,7 @@ namespace TeamSpeakkki.Chaewon
         [SerializeField] private List<TileInfo> tileInfos;
 
         [SerializeField] private PlayerSpawner playerSpawner;
+        [SerializeField] private DeathZone deathZone;
 
         private Dictionary<TileKind, Tile> tileDictionary = new(10);
 
@@ -47,6 +48,7 @@ namespace TeamSpeakkki.Chaewon
             foreach (GridCell cell in map.Cells)
                 PlaceCell(cell);
 
+            deathZone.SetDeathZone(map.OriginX, map.FallBoundaryY, map.Width);
             playerSpawner.SetPlayerSpawner(new Vector2(map.Spawn.X, map.Spawn.Y + 2));
         }
 
