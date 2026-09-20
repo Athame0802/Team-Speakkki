@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Tile_GroundBlock
+  m_Name: Tile_LuckyBlock
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 21300000, guid: 812d78e4d144c9d449330f0a51511107, type: 3}
-  m_Color: {r: 0.86274517, g: 0.3529412, b: 0.078431375, a: 1}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 0.9921569, g: 0.75294125, b: 0.48235297, a: 1}
   m_Transform:
     e00: 1
     e01: 0
@@ -31,6 +31,6 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 0}
+  m_InstancedGameObject: {fileID: 3200581157015945374, guid: 544ba6b4e05cfaa46b2f3098d3232433, type: 3}
   m_Flags: 1
-  m_ColliderType: 1
+  m_ColliderType: 0
