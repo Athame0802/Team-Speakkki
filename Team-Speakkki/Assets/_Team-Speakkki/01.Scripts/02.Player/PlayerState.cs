@@ -9,6 +9,11 @@ namespace TeamSpeakkki.Chaewon
 
         private PlayerPowerUp currentPowerUp;
 
+        public void Awake()
+        {
+            ChangePowerUp(new BasicPowerUp());
+        }
+
         public void ChangePowerUp(PlayerPowerUp powerUp)
         {
             currentPowerUp = powerUp;
@@ -32,6 +37,7 @@ namespace TeamSpeakkki.Chaewon
         public void Die()
         {
             OnDied?.Invoke();
+            ChangePowerUp(new BasicPowerUp());
             gameObject.SetActive(false);
         }
     }
