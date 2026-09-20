@@ -4,15 +4,17 @@ namespace TeamSpeakkki.Chaewon
 {
     public class PlayerMove : MonoBehaviour
     {
-        [SerializeField] private PlayerGroundChecker groundChecker;
+
+        [SerializeField] private PlayerDetector detector;
         [SerializeField] private Rigidbody2D rb;
 
         [SerializeField] private float jumpPower = 3f;
         [SerializeField] private float moveSpeed = 3f;
         [SerializeField] private float gravityScaleOnJumpKeyHoldDown = 3f;
+        
+        private static readonly Vector2 blockRepulsiveForce = new Vector2(0, -5f);
 
         private float basicGravityScale;
-        private bool isLowGravityAppliedOnThisJump = false;
 
         private bool isThisJumpRepulsiveForceAlreadyApplied = false;
 
@@ -24,16 +26,20 @@ namespace TeamSpeakkki.Chaewon
         private void OnEnable()
         {
             InputManager.Instance.OnJumpKeyDown += TryJump;
-            InputManager.Instance.OnJumpKeyDown += CheckShouldJumpInLowGravity;
 
+            detector.OnGroundedChangedToTrue += RecoverJumpGravityScale;
+            detector.OnHeadCollision += RecoverJumpGravityScale;
+            detector.OnHeadCollision += ApplyRepulsiveForce;
             InputManager.Instance.OnJumpKeyUp += RecoverJumpGravityScale;
         }
 
         private void OnDisable()
         {
             InputManager.Instance.OnJumpKeyDown -= TryJump;
-            InputManager.Instance.OnJumpKeyDown -= CheckShouldJumpInLowGravity;
 
+            detector.OnGroundedChangedToTrue -= RecoverJumpGravityScale;
+            detector.OnHeadCollision -= RecoverJumpGravityScale;
+            detector.OnHeadCollision -= ApplyRepulsiveForce;
             InputManager.Instance.OnJumpKeyUp -= RecoverJumpGravityScale;
         }
 
@@ -42,11 +48,13 @@ namespace TeamSpeakkki.Chaewon
             Move();
         }
 
-        public void ApplyBlockRepulsiveForce(Vector2 blockRepulsiveForce)
+        private void ApplyRepulsiveForce()
         {
             // 점프 한 번에 블럭을 2개 쳤을 때 반발력이 2번 적용되지 않게 하기 위한 조치
             if (isThisJumpRepulsiveForceAlreadyApplied)
                 return;
+
+            Debug.Log("반발력 적용됨");
 
             rb.AddForce(blockRepulsiveForce, ForceMode2D.Impulse);
             isThisJumpRepulsiveForceAlreadyApplied = true;
@@ -59,35 +67,23 @@ namespace TeamSpeakkki.Chaewon
 
         private void TryJump()
         {
-            if (!groundChecker.IsGrounded)
+            if (!detector.IsGrounded)
                 return;
 
             // TODO: 코요테 타임, 점프 버퍼 구현
 
             Jump();
-        }
-
-        private void CheckShouldJumpInLowGravity()
-        {
-            if (isLowGravityAppliedOnThisJump)
-                return;
-
             rb.gravityScale = gravityScaleOnJumpKeyHoldDown;
         }
 
         private void RecoverJumpGravityScale()
         {
-            if (isLowGravityAppliedOnThisJump)
-                return;
-
             rb.gravityScale = basicGravityScale;
-            isLowGravityAppliedOnThisJump = true;
         }
 
         private void Jump()
         {
             rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
-            isLowGravityAppliedOnThisJump = false;
             isThisJumpRepulsiveForceAlreadyApplied = false;
         }
     }

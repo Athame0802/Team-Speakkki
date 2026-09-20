@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class HittableBlock : MonoBehaviour
 {
-    private static readonly Vector2 blockRepulsiveForce = new Vector2(0, -3f);
-
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private new Collider2D collider;
 
@@ -44,9 +42,6 @@ public class HittableBlock : MonoBehaviour
             if (hitCount >= requiredHitsToBreak) 
                 Break();
         }
-
-        PlayerMove playerMove = player.GetComponent<PlayerMove>();
-        playerMove.ApplyBlockRepulsiveForce(blockRepulsiveForce);
     }
 
     // TODO: 부서질 때 효과 추가
