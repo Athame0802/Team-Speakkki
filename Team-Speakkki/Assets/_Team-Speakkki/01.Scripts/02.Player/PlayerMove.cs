@@ -77,18 +77,5 @@ namespace TeamSpeakkki.Chaewon
             rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
             isLowGravityAppliedOnThisJump = false;
         }
-
-        private bool GetIsJumpArising()
-        {
-            // 땅에 있을 때
-            if (groundChecker.IsGrounded)
-                return false;
-
-            // 떨어지고 있을 때
-            if (rb.linearVelocityY <= 0f)
-                return false;
-
-            return true;
-        }
     }
 }
