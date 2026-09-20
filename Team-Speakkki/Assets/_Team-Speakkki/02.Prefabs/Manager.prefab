@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 86655263432378573}
   - component: {fileID: 2091087359790678480}
   - component: {fileID: 8496629866820596168}
+  - component: {fileID: 2860073592448864252}
   - component: {fileID: -4812376535140592179}
   - component: {fileID: 1561565852456970669}
   m_Layer: 0
@@ -60,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5abecb2d031a75468424f322317de91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeamSpeakkki.Chaewon.InputManager
---- !u!114 &-4812376535140592179
+--- !u!114 &2860073592448864252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,6 +69,28 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5346534476191359589}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e2ed662f5ba54db09027f32736d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TeamSpeakkki.Chaewon.MapSetter
+  tilemap: {fileID: 0}
+  tileInfos:
+  - Kind: 1
+    Tile: {fileID: 11400000, guid: e50d012f8d84d784985ee2fca0651a6c, type: 2}
+  - Kind: 2
+    Tile: {fileID: 11400000, guid: e34ee5c8667a3ed4fb69f0df65305b83, type: 2}
+  - Kind: 3
+    Tile: {fileID: 11400000, guid: 4def30092ee57bd4e8c0a4811430cc40, type: 2}
+  playerSpawner: {fileID: 0}
+  deathZone: {fileID: 0}
+--- !u!114 &-4812376535140592179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346534476191359589}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 791fc1b8475cf654eabacfaa6442b44f, type: 3}
   m_Name: 
@@ -79,10 +102,10 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5346534476191359589}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01c6226dd3755a54bafab0dda24e476f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PositionSynchronizer
-  player: {fileID: 0}
+  player: {fileID: 3243131634548937168, guid: ee8559134a6e5214c8c1d595bf33b49c, type: 3}
   otherPlayerPrefab: {fileID: 5136885036408932422, guid: 81ef82186bde403429bf7886f83bde50, type: 3}

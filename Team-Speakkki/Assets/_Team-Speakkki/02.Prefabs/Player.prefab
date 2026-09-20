@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc1471a2e012a34aab0a58a30de557f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeamSpeakkki.Chaewon.PlayerWallet
+  playerState: {fileID: 8533608486177967421}
   coinCount: 0
   maxCoinCount: 99
 --- !u!212 &3323647378937420597
