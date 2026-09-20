@@ -30,6 +30,7 @@ namespace TeamSpeakkki.Inchang.ScoreUI
         }
         private void Update()
         {
+            // 임시 테스트용 코드
             if (Input.GetKeyDown(KeyCode.V))
             {
                 AddScore(100);
