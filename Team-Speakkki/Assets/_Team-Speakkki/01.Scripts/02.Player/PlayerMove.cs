@@ -11,8 +11,10 @@ namespace TeamSpeakkki.Chaewon
         [SerializeField] private float moveSpeed = 3f;
         [SerializeField] private float gravityScaleOnJumpKeyHoldDown = 3f;
 
-        private bool isLowGravityAppliedOnThisJump = false;
         private float basicGravityScale;
+        private bool isLowGravityAppliedOnThisJump = false;
+
+        private bool isThisJumpRepulsiveForceAlreadyApplied = false;
 
         private void Awake()
         {
@@ -38,6 +40,16 @@ namespace TeamSpeakkki.Chaewon
         private void FixedUpdate()
         {
             Move();
+        }
+
+        public void ApplyBlockRepulsiveForce(Vector2 blockRepulsiveForce)
+        {
+            // 점프 한 번에 블럭을 2개 쳤을 때 반발력이 2번 적용되지 않게 하기 위한 조치
+            if (isThisJumpRepulsiveForceAlreadyApplied)
+                return;
+
+            rb.AddForce(blockRepulsiveForce, ForceMode2D.Impulse);
+            isThisJumpRepulsiveForceAlreadyApplied = true;
         }
 
         private void Move()
@@ -76,6 +88,7 @@ namespace TeamSpeakkki.Chaewon
         {
             rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
             isLowGravityAppliedOnThisJump = false;
+            isThisJumpRepulsiveForceAlreadyApplied = false;
         }
     }
 }
