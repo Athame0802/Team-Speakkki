@@ -32,7 +32,7 @@ namespace TeamSpeakkki.Chaewon
         public void Die()
         {
             OnDied?.Invoke();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
