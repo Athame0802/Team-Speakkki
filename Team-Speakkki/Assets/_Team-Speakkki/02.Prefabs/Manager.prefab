@@ -81,6 +81,8 @@ MonoBehaviour:
     Tile: {fileID: 11400000, guid: e34ee5c8667a3ed4fb69f0df65305b83, type: 2}
   - Kind: 3
     Tile: {fileID: 11400000, guid: 4def30092ee57bd4e8c0a4811430cc40, type: 2}
+  - Kind: 5
+    Tile: {fileID: 11400000, guid: 7b222150d5df83149adf378986081fc9, type: 2}
   playerSpawner: {fileID: 0}
   deathZone: {fileID: 0}
 --- !u!114 &-4812376535140592179

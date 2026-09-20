@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Tile_GroundBlock
+  m_Name: Tile_StairBlock
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 21300000, guid: 812d78e4d144c9d449330f0a51511107, type: 3}
-  m_Color: {r: 0.81568635, g: 0.30588236, b: 0.027450982, a: 1}
+  m_Sprite: {fileID: 5017702110065031394, guid: 0330f093d009a2147ac762987e43d2b9, type: 3}
+  m_Color: {r: 0.9803922, g: 0.7372549, b: 0.70980394, a: 1}
   m_Transform:
     e00: 1
     e01: 0
