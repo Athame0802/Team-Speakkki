@@ -29,6 +29,7 @@ namespace TeamSpeakkki.Chaewon
 
         [SerializeField] private PlayerSpawner playerSpawner;
         [SerializeField] private DeathZone deathZone;
+        [SerializeField] private BoxCollider2D cameraBounds;
 
         private Dictionary<TileKind, Tile> tileDictionary = new(10);
 
@@ -50,6 +51,9 @@ namespace TeamSpeakkki.Chaewon
 
             deathZone.SetDeathZone(map.OriginX, map.FallBoundaryY, map.Width);
             playerSpawner.SetPlayerSpawner(new Vector2(map.Spawn.X, map.Spawn.Y + 2));
+
+            cameraBounds.size = new Vector2(map.Width, map.Height - 1f);
+            cameraBounds.offset = new Vector2(map.Width / 2, map.Height / 2);
         }
 
         private void PlaceCell(GridCell cell)
