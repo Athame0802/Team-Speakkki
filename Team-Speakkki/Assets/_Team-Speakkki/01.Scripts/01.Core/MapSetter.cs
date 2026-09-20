@@ -27,6 +27,7 @@ namespace TeamSpeakkki.Chaewon
         [SerializeField] private Tilemap tilemap;
         [SerializeField] private List<TileInfo> tileInfos;
 
+        [SerializeField] private PlayerSpawner playerSpawner;
 
         private Dictionary<TileKind, Tile> tileDictionary = new(10);
 
@@ -46,6 +47,7 @@ namespace TeamSpeakkki.Chaewon
             foreach (GridCell cell in map.Cells)
                 PlaceCell(cell);
 
+            playerSpawner.SetPlayerSpawner(new Vector2(map.Spawn.X, map.Spawn.Y + 2));
         }
 
         private void PlaceCell(GridCell cell)
