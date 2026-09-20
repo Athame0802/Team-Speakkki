@@ -5,6 +5,7 @@ using System;
 
 namespace TeamSpeakkki.Chaewon
 {
+    [DefaultExecutionOrder(-100)]
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
@@ -36,6 +37,7 @@ namespace TeamSpeakkki.Chaewon
         {
             playerState.OnDied -= GameOver;
         }
+
         private void GameOver()
         {
             OnGameOver?.Invoke();

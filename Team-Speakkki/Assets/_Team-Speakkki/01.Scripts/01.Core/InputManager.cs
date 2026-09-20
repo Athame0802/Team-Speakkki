@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace TeamSpeakkki.Chaewon
 {
+    [DefaultExecutionOrder(-100)]
     public class InputManager : MonoBehaviour
     {
         public static InputManager Instance;
