@@ -791,7 +791,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -9215,7 +9215,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 7
+    OrthographicSize: 6.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -9251,7 +9251,7 @@ MonoBehaviour:
     ScreenPosition: {x: -0.25, y: 0}
     DeadZone:
       Enabled: 1
-      Size: {x: 0, y: 1}
+      Size: {x: 0, y: 0.5}
     HardLimits:
       Enabled: 0
       Size: {x: 0.8, y: 1}
@@ -9273,7 +9273,7 @@ Transform:
   m_GameObject: {fileID: 1924239908}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.2222223, y: 10, z: -10}
+  m_LocalPosition: {x: 5.7777777, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
