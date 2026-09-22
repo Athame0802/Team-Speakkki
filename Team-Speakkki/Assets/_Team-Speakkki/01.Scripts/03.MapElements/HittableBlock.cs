@@ -9,6 +9,7 @@ public class HittableBlock : MonoBehaviour
     [SerializeField] private int requiredHitsToBreak = 1;
     [SerializeField] private bool isBreakable = true;
     [SerializeField] private GameObject SpawningObjectOnFirstHit;
+    [SerializeField] private float allowedDiff = 0.1f;
 
     private int hitCount = 0; // 블록이 맞은 횟수
 
@@ -21,7 +22,9 @@ public class HittableBlock : MonoBehaviour
         float playerTopY = collision.collider.bounds.max.y;
         float blockBottomY = collider.bounds.min.y;
 
-        if (playerTopY < blockBottomY)
+        float yDiff = Mathf.Abs(playerTopY - blockBottomY);
+
+        if (yDiff < allowedDiff)
             OnHit(collision.gameObject);
     }
     

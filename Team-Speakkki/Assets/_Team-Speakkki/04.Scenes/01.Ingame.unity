@@ -816,7 +816,7 @@ Transform:
   m_GameObject: {fileID: 676155690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 5.7777777, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8421,6 +8421,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4812376535140592179, guid: cbee9214f88dec840af7b9b4d06896ce, type: 3}
+      propertyPath: mapSetter
+      value: 
+      objectReference: {fileID: 2073139012}
+    - target: {fileID: -4812376535140592179, guid: cbee9214f88dec840af7b9b4d06896ce, type: 3}
+      propertyPath: playerMove
+      value: 
+      objectReference: {fileID: 834186976}
+    - target: {fileID: -4812376535140592179, guid: cbee9214f88dec840af7b9b4d06896ce, type: 3}
+      propertyPath: synchronizer
+      value: 
+      objectReference: {fileID: 2073139010}
     - target: {fileID: 86655263432378573, guid: cbee9214f88dec840af7b9b4d06896ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.66605
@@ -8538,6 +8550,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3290241115287641176, guid: ee8559134a6e5214c8c1d595bf33b49c, type: 3}
   m_PrefabInstance: {fileID: 1526673893}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &834186976 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 351617432238240492, guid: ee8559134a6e5214c8c1d595bf33b49c, type: 3}
+  m_PrefabInstance: {fileID: 1526673893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834186964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf63a48595102046bfc1948a88ac258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TeamSpeakkki.Chaewon.PlayerMove
 --- !u!4 &997520667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6337459669217165478, guid: 5ced1fcd08676594ea34719defa66a67, type: 3}
@@ -9293,7 +9316,7 @@ Transform:
   m_GameObject: {fileID: 1924239908}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.595774, y: 10, z: -10}
+  m_LocalPosition: {x: 5.7777777, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9311,7 +9334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineConfiner2D
-  BoundingShape2D: {fileID: 1455160282}
+  BoundingShape2D: {fileID: 0}
   Damping: 0.5
   SlowingDistance: 5
   OversizeWindow:
@@ -9598,6 +9621,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2073139010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1561565852456970669, guid: cbee9214f88dec840af7b9b4d06896ce, type: 3}
+  m_PrefabInstance: {fileID: 818279322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c6226dd3755a54bafab0dda24e476f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PositionSynchronizer
+--- !u!114 &2073139012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2860073592448864252, guid: cbee9214f88dec840af7b9b4d06896ce, type: 3}
+  m_PrefabInstance: {fileID: 818279322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e2ed662f5ba54db09027f32736d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TeamSpeakkki.Chaewon.MapSetter
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

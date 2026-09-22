@@ -28,6 +28,11 @@ namespace TeamSpeakkki.Chaewon
             }
         }
 
+        public void LoadScene(int sceneIndex)
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+
         private void OnEnable()
         {
             playerState.OnDied += GameOver;

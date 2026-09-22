@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using School.PositionSync;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -24,6 +25,8 @@ namespace TeamSpeakkki.Chaewon
     /// </summary>
     public class MapSetter : MonoBehaviour
     {
+        [SerializeField] private CinemachineConfiner2D confiner;
+
         [SerializeField] private Tilemap tilemap;
         [SerializeField] private List<TileInfo> tileInfos;
 
@@ -37,12 +40,9 @@ namespace TeamSpeakkki.Chaewon
         {
             foreach (TileInfo tileInfo in tileInfos)
                 tileDictionary.Add(tileInfo.Kind, tileInfo.Tile);
-
-            // TODO: 게임메니저가 로딩 창에서 맵 로딩하게 바꾸기
-            LoadMap(MapCatalog.Default);
         }
 
-        private void LoadMap(GridMap map)
+        public void LoadMap(GridMap map)
         {
             tilemap.transform.position = new Vector2(map.OriginX, map.OriginY);
 
@@ -54,6 +54,7 @@ namespace TeamSpeakkki.Chaewon
 
             cameraBounds.size = new Vector2(map.Width, map.Height - 1f);
             cameraBounds.offset = new Vector2(map.Width / 2, map.Height / 2);
+            confiner.BoundingShape2D = cameraBounds;
         }
 
         private void PlaceCell(GridCell cell)

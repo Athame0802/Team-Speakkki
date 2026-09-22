@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using School.PositionSync;
+using UnityEngine;
 
 namespace TeamSpeakkki.Chaewon
 {
@@ -8,8 +9,8 @@ namespace TeamSpeakkki.Chaewon
         [SerializeField] private PlayerDetector detector;
         [SerializeField] private Rigidbody2D rb;
 
-        [SerializeField] private float jumpPower = 3f;
-        [SerializeField] private float moveSpeed = 3f;
+        private float jumpPower = 3f;
+        private float moveSpeed = 3f;
         [SerializeField] private float gravityScaleOnJumpKeyHoldDown = 3f;
         
         private static readonly Vector2 blockRepulsiveForce = new Vector2(0, -5f);
@@ -46,6 +47,13 @@ namespace TeamSpeakkki.Chaewon
         private void FixedUpdate()
         {
             Move();
+        }
+
+        public void OnConnected(MoveRules rules)
+        {
+            moveSpeed = rules.Speed;
+            jumpPower = rules.JumpPower;
+            Physics2D.gravity = new Vector2(0, -rules.Gravity);
         }
 
         private void ApplyRepulsiveForce()

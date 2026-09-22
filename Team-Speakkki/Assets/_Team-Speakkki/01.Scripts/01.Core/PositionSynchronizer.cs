@@ -10,23 +10,23 @@ public class PositionSynchronizer : MonoBehaviour
 
     private Dictionary<int, GameObject> otherPlayersGameObject = new(10);
     private HashSet<int> activedOtherPlayersId = new(10);
+    private List<int> shouldDeletePlayersId = new(10);
+    private Info[] otherPlayersInfo;
 
-    public void Start()
+    public void OnPlayerUpdated(Info[] players)
     {
-        Server server = NetworkManager.Instance.Server;
-
-        Info[] otherPlayers = server.GetPos();
-        
-        foreach (Info otherPlayer in otherPlayers)
-            AddOtherPlayer(otherPlayer);
-    }
-
-    public void Update()
-    {
-        Server server = NetworkManager.Instance.Server;
+        otherPlayersInfo = players;
 
         SyncThisClientPosition();
         SyncOtherClientsPosition();
+    }
+
+    public void OnWorldReset()
+    {
+        otherPlayersGameObject.Clear();
+        activedOtherPlayersId.Clear();
+        shouldDeletePlayersId.Clear();
+        otherPlayersInfo = null;
     }
 
     private GameObject AddOtherPlayer(Info playerInfo)
@@ -55,9 +55,7 @@ public class PositionSynchronizer : MonoBehaviour
     {
         Server server = NetworkManager.Instance.Server;
 
-        Info[] otherPlayers = server.GetPos();
-
-        foreach (Info otherPlayer in otherPlayers)
+        foreach (Info otherPlayer in otherPlayersInfo)
         {
             activedOtherPlayersId.Add(otherPlayer.Id);
 
@@ -76,11 +74,24 @@ public class PositionSynchronizer : MonoBehaviour
             bool isDisconnectedPlayer = !activedOtherPlayersId.Contains(otherPlayerKey);
             if (isDisconnectedPlayer)
             {
-                Destroy(otherPlayer.Value);
-                otherPlayersGameObject.Remove(otherPlayer.Key);
+                shouldDeletePlayersId.Add(otherPlayerKey);
             }
         }
 
+        foreach (int id in shouldDeletePlayersId)
+        {
+            bool hasId = otherPlayersGameObject.TryGetValue(id, out GameObject shouldDeletePlayer);
+            if (!hasId)
+            {
+                Debug.LogWarning("[PositionSynchronizer] 지우려는 플레이어를 딕셔너리에서 찾았지만 지우려고 했더니 플레이어를 찾을 수 없습니다!");
+                continue;
+            }
+
+            Destroy(shouldDeletePlayer);
+            otherPlayersGameObject.Remove(id);
+        }
+
         activedOtherPlayersId.Clear();
+        shouldDeletePlayersId.Clear();
     }
 }
