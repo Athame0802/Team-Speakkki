@@ -5,16 +5,22 @@ public class HittableBlock : MonoBehaviour
 {
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private new Collider2D collider;
+    [SerializeField] private new SpriteRenderer renderer;
+    [SerializeField] private Sprite emptyBlockSprite;
 
     [SerializeField] private int requiredHitsToBreak = 1;
     [SerializeField] private bool isBreakable = true;
-    [SerializeField] private GameObject SpawningObjectOnFirstHit;
+    [SerializeField] private GameObject SpawningObjectOnFirstHit; //블록을 한번 쳤을 때 나오는 아이템
     [SerializeField] private float allowedDiff = 0.1f;
 
+    private bool isNoReact = false;
     private int hitCount = 0; // 블록이 맞은 횟수
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (isNoReact)
+            return;
+
         bool isSameLayer = (playerLayer.value & (1 << collision.gameObject.layer)) != 0;
         if (!isSameLayer)
             return;
@@ -36,14 +42,22 @@ public class HittableBlock : MonoBehaviour
         if (shouldSpawnFirstHitObject)
         {
             Instantiate(SpawningObjectOnFirstHit, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+            isBreakable = false;
         }
 
         if (isBreakable)
         {
             hitCount++;
 
-            if (hitCount >= requiredHitsToBreak) 
+            if (hitCount >= requiredHitsToBreak)
+            {
                 Break();
+            }
+        }
+        else
+        {
+            isNoReact = true;
+            renderer.sprite = emptyBlockSprite;
         }
     }
 
