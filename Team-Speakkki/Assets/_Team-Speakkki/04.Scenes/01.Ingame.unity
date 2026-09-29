@@ -554,7 +554,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1010, y: 1080}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -8485,6 +8485,10 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 1267609071}
+    - target: {fileID: 2860073592448864252, guid: cbee9214f88dec840af7b9b4d06896ce, type: 3}
+      propertyPath: confiner
+      value: 
+      objectReference: {fileID: 1924239912}
     - target: {fileID: 2860073592448864252, guid: cbee9214f88dec840af7b9b4d06896ce, type: 3}
       propertyPath: deathZone
       value: 
